@@ -1,0 +1,28 @@
+create table estudiante(
+	id bigint not null auto_increment unique,
+	rut varchar(12)	not null unique,
+	apellidos varchar(50) not null,
+	nombres varchar(50) not null,
+	f_nacimiento date not null,
+	tipo_colegio_p varchar(1) not null,
+	nom_colegio varchar(40) not null,
+	anyo_egreso_col int not null,
+	tipo_pago boolean not null,
+	primary key(id));
+
+create table cuota(
+	id bigint not null auto_increment unique,
+	valor int not null,
+	estado varchar(1) not null,
+	fecha_venc date not null,
+	rut varchar(12)	not null,
+	primary key(id),
+	foreign key(rut) references estudiante(rut));
+
+create table examenes(
+	id bigint not null auto_increment unique,
+	puntaje int not null,
+	fecha_exam date not null,
+	rut varchar(12)	not null,
+	primary key(id),
+	foreign key(rut) references estudiante(rut));
