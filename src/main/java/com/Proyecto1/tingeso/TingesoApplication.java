@@ -1,5 +1,4 @@
 package com.Proyecto1.tingeso;
-
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
