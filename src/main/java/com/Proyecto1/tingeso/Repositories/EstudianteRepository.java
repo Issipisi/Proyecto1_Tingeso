@@ -13,8 +13,8 @@ public interface EstudianteRepository extends CrudRepository <Estudiante,Long>{
     @Modifying
     @Transactional
     @Query(value = "insert into estudiante (rut, apellidos, nombres, f_nacimiento, tipo_colegio_p, nom_colegio, " +
-            "anyo_egreso_col, tipo_pago) values(:rut, :apellidos, :nombres, :f_nacimiento, :tipo_colegio_p, :nom_colegio,"
-            + " :anyo_egreso_col, :tipo_pago)", nativeQuery = true)
+            "anyo_egreso_col, tipo_pago) values(:rut, :apellidos, :nombres, :f_nacimiento, :tipo_colegio_p, " +
+            ":nom_colegio, :anyo_egreso_col, :tipo_pago)", nativeQuery = true)
 
     public void insertEstudiante(@Param("rut") String rut,
                                  @Param("apellidos") String apellidos,

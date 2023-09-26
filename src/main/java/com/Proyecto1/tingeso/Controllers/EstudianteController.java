@@ -1,6 +1,5 @@
 package com.Proyecto1.tingeso.Controllers;
 import com.Proyecto1.tingeso.Entities.Estudiante;
-import com.Proyecto1.tingeso.Repositories.EstudianteRepository;
 import com.Proyecto1.tingeso.Services.EstudianteServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
