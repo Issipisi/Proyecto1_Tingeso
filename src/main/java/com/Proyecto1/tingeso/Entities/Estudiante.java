@@ -24,6 +24,6 @@ public class Estudiante {
     @Column(name="anyo_egreso_col", nullable = false)
     private int anyo_egreso_col;
     @Column(name="tipo_pago", nullable = false)
-    private Boolean tipo_pago;
+    private int tipo_pago;
 
 }

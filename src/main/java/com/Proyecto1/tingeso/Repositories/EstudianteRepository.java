@@ -23,5 +23,5 @@ public interface EstudianteRepository extends CrudRepository <Estudiante,Long>{
                                  @Param("tipo_colegio_p") String tipo_colegio_p,
                                  @Param("nom_colegio") String nom_colegio,
                                  @Param("anyo_egreso_col") int anyo_egreso_col,
-                                 @Param("tipo_pago") Boolean tipo_pago);
+                                 @Param("tipo_pago") int tipo_pago);
 }

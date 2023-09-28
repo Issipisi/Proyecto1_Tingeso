@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Formulario de ingreso de datos</title>
+</head>
+<body>
+    <h2>Ingrese los datos:</h2>
+    <form action = "/estudiantes" method="post" enctype="application/json">
+
+        <label for="nombres">Nombres:</label>
+        <input type="text" id="nombres" name="nombres" required><br><br>
+
+        <label for="apellidos">Apellidos:</label>
+        <input type="text" id="apellidos" name="apellidos" required><br><br>
+
+        <label for="rut">RUT:</label>
+        <input type="text" id="rut" name="rut" required><br><br>
+
+        <label for="f_nacimiento">Fecha de Nacimiento:</label>
+        <input type="date" id="f_nacimiento" name="f_nacimiento" required><br><br>
+
+        <label for="tipo_colegio_p">Tipo de Colegio:</label>
+        <input type="text" id="tipo_colegio_p" name="tipo_colegio_p" required><br><br>
+
+        <label for="nom_colegio">Nombre del Colegio:</label>
+        <input type="text" id="nom_colegio" name="nom_colegio" required><br><br>
+
+        <label for="anyo_egreso_col">Año de Egreso:</label>
+        <input type="number" id="anyo_egreso_col" name="anyo_egreso_col" required><br><br>
+
+        <label for="tipo_pago">Tipo de Pago:</label>
+        <input type="text" id="tipo_pago" name="tipo_pago" required><br><br>
+
+        <input type="submit" value="Enviar">
+    </form>
+</body>
+</html>
