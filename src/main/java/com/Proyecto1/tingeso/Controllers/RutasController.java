@@ -9,4 +9,15 @@ public class RutasController {
     public String ingresoDatos(){
         return "IngresoDatos";
     }
+
+    @GetMapping("/generarCuota")
+    public String generarCuota(){
+        return "GenerarCuota";
+    }
+
+    @GetMapping("/index")
+    public String index(){
+        return "Index";
+    }
+
 }

@@ -16,7 +16,10 @@ public interface CuotaRepository extends CrudRepository<Cuota,Long> {
             nativeQuery = true)
 
     public void insertCuota(@Param("valor")int valor,
-                            @Param("estado") String estado,
+                            @Param("estado") int estado,
                             @Param("fecha_venc")LocalDate fecha_venc,
                             @Param("rut") String rut);
+
+
+
 }

@@ -13,4 +13,10 @@ public class EstudianteServices {
                 estudiante.getF_nacimiento(), estudiante.getTipo_colegio_p(), estudiante.getNom_colegio(),
                 estudiante.getAnyo_egreso_col(), estudiante.getTipo_pago());
     }
+
+    public Estudiante selectEstudiante(String rut){
+        //EstudianteRepository  estudianteRepository1 = new EstudianteRepository();
+        Estudiante estudiante = estudianteRepository.selectEstudiante(rut);
+        return estudiante;
+    }
 }

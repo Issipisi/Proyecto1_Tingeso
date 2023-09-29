@@ -24,4 +24,8 @@ public interface EstudianteRepository extends CrudRepository <Estudiante,Long>{
                                  @Param("nom_colegio") String nom_colegio,
                                  @Param("anyo_egreso_col") int anyo_egreso_col,
                                  @Param("tipo_pago") int tipo_pago);
+
+    @Query(value = "select from estudiante rut = :rut ", nativeQuery = true)
+    public Estudiante selectEstudiante(@Param("rut") String rut);
+
 }

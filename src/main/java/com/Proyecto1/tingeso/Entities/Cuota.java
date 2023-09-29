@@ -12,7 +12,7 @@ public class Cuota {
     @Column(name="valor", nullable = false)
     private int valor;
     @Column(name="estado", nullable = false)
-    private String estado;
+    private int estado;
     @Column(name="fecha_venc", nullable = false)
     private LocalDate fecha_venc;
     @Column(name="rut", nullable = false)

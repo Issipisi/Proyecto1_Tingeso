@@ -16,4 +16,7 @@ public class CuotaController {
     public void insertCuota(@RequestBody Cuota cuota){
         cuotaServices.insertCuota(cuota);
     }
+
+    @PostMapping("/generarCuota")
+    public void generarCuota(@RequestParam(name = "rut") String rut){ cuotaServices.generarCuota(rut);}
 }

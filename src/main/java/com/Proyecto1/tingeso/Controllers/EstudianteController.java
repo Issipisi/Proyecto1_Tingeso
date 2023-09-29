@@ -4,6 +4,7 @@ import com.Proyecto1.tingeso.Services.EstudianteServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.time.LocalDate;
 
@@ -11,15 +12,16 @@ import java.time.LocalDate;
 public class EstudianteController {
     @Autowired
     EstudianteServices estudianteServices;
+
     @PostMapping("/estudiantes")
-    public void insertEstudiante(@RequestParam("nombres") String nombres,
-                                 @RequestParam("apellidos") String apellidos,
-                                 @RequestParam("rut") String rut,
-                                 @RequestParam("f_nacimiento") String f_nacimiento,
-                                 @RequestParam("tipo_colegio_p") String tipo_colegio_p,
-                                 @RequestParam("nom_colegio") String nom_colegio,
-                                 @RequestParam("anyo_egreso_col") int anyo_egreso_col,
-                                 @RequestParam("tipo_pago") int tipo_pago){
+    public ModelAndView insertEstudiante(@RequestParam("nombres") String nombres,
+                                         @RequestParam("apellidos") String apellidos,
+                                         @RequestParam("rut") String rut,
+                                         @RequestParam("f_nacimiento") String f_nacimiento,
+                                         @RequestParam("tipo_colegio_p") String tipo_colegio_p,
+                                         @RequestParam("nom_colegio") String nom_colegio,
+                                         @RequestParam("anyo_egreso_col") int anyo_egreso_col,
+                                         @RequestParam("tipo_pago") int tipo_pago){
 
         Estudiante estudiante = new Estudiante();
         estudiante.setApellidos(apellidos);
@@ -32,5 +34,9 @@ public class EstudianteController {
         estudiante.setAnyo_egreso_col(anyo_egreso_col);
 
         estudianteServices.insertEstudiante(estudiante);
+
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("IngresoDatos");
+        return modelAndView;
     }
 }
