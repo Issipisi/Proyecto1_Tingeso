@@ -7,13 +7,18 @@
 <body>
     <h2>TopEducation</h2>
 
-    <form action = "/generarCuota" method="post" enctype="application/json">
+    <form action = "/ingresoDatos" method="get" enctype="application/json">
 
       <label >Desea Ingresar sus datos</label>
-      <input type="submit" value="Ingresar"  href="/ingresoDatos" >
+      <input type="submit" value="Ingresar"  href="/IngresoDatos" >
 
-      <label >Desea Generar sus cuotas</label>
-      <input type="submit" value="Generar"  href="/generarCuota" >
+    </form>
+
+    <form action = "/generarCuota" method="get" enctype="application/json">
+
+        <label >Desea Generar sus cuotas</label>
+        <input type="submit" value="Generar"  href="/GenerarCuota" >
+
     </form>
 
 

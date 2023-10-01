@@ -18,7 +18,7 @@ public class EstudianteController {
                                          @RequestParam("apellidos") String apellidos,
                                          @RequestParam("rut") String rut,
                                          @RequestParam("f_nacimiento") String f_nacimiento,
-                                         @RequestParam("tipo_colegio_p") String tipo_colegio_p,
+                                         @RequestParam("tipo_colegio_p") int tipo_colegio_p,
                                          @RequestParam("nom_colegio") String nom_colegio,
                                          @RequestParam("anyo_egreso_col") int anyo_egreso_col,
                                          @RequestParam("tipo_pago") int tipo_pago){
@@ -36,7 +36,7 @@ public class EstudianteController {
         estudianteServices.insertEstudiante(estudiante);
 
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("IngresoDatos");
+        modelAndView.setViewName("Index");
         return modelAndView;
     }
 }

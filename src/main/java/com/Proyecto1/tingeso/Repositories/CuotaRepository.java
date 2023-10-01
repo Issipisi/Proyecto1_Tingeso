@@ -20,6 +20,4 @@ public interface CuotaRepository extends CrudRepository<Cuota,Long> {
                             @Param("fecha_venc")LocalDate fecha_venc,
                             @Param("rut") String rut);
 
-
-
 }

@@ -18,7 +18,7 @@ public class Estudiante {
     @Column(name="f_nacimiento", nullable = false)
     private LocalDate f_nacimiento;
     @Column(name="tipo_colegio_p", nullable = false)
-    private String tipo_colegio_p;
+    private int tipo_colegio_p;
     @Column(name="nom_colegio", nullable = false)
     private String nom_colegio ;
     @Column(name="anyo_egreso_col", nullable = false)

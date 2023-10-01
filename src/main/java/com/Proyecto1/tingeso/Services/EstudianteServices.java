@@ -7,7 +7,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class EstudianteServices {
     @Autowired
-    EstudianteRepository estudianteRepository;
+    EstudianteRepository estudianteRepository ;
+
     public void insertEstudiante(Estudiante estudiante){
         estudianteRepository.insertEstudiante(estudiante.getRut(), estudiante.getApellidos(), estudiante.getNombres(),
                 estudiante.getF_nacimiento(), estudiante.getTipo_colegio_p(), estudiante.getNom_colegio(),
@@ -15,8 +16,8 @@ public class EstudianteServices {
     }
 
     public Estudiante selectEstudiante(String rut){
-        //EstudianteRepository  estudianteRepository1 = new EstudianteRepository();
-        Estudiante estudiante = estudianteRepository.selectEstudiante(rut);
+          Estudiante estudiante = new Estudiante();
+          estudiante = estudianteRepository.selectEstudiante(rut);
         return estudiante;
     }
 }

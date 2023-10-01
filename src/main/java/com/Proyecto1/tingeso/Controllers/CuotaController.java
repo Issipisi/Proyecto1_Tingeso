@@ -5,6 +5,7 @@ import com.Proyecto1.tingeso.Services.CuotaServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller @RequestMapping @CrossOrigin @RestController
 public class CuotaController {
@@ -18,5 +19,11 @@ public class CuotaController {
     }
 
     @PostMapping("/generarCuota")
-    public void generarCuota(@RequestParam(name = "rut") String rut){ cuotaServices.generarCuota(rut);}
+    public ModelAndView generarCuota(@RequestParam(name = "rut") String rut){
+        cuotaServices.generarCuota(rut);
+
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("Index");
+        return modelAndView;
+    }
 }

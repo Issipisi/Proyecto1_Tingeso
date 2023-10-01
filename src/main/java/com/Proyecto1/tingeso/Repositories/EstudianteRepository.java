@@ -20,12 +20,12 @@ public interface EstudianteRepository extends CrudRepository <Estudiante,Long>{
                                  @Param("apellidos") String apellidos,
                                  @Param("nombres") String nombres,
                                  @Param("f_nacimiento")LocalDate f_nacimiento,
-                                 @Param("tipo_colegio_p") String tipo_colegio_p,
+                                 @Param("tipo_colegio_p") int tipo_colegio_p,
                                  @Param("nom_colegio") String nom_colegio,
                                  @Param("anyo_egreso_col") int anyo_egreso_col,
                                  @Param("tipo_pago") int tipo_pago);
 
-    @Query(value = "select from estudiante rut = :rut ", nativeQuery = true)
-    public Estudiante selectEstudiante(@Param("rut") String rut);
+    @Query(value = "select * from estudiante WHERE rut = :rut ", nativeQuery = true)
+    public Estudiante selectEstudiante(String rut);
 
 }

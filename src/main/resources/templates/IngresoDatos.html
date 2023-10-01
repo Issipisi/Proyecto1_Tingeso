@@ -21,7 +21,11 @@
         <input type="date" id="f_nacimiento" name="f_nacimiento" required><br><br>
 
         <label for="tipo_colegio_p">Tipo de Colegio:</label>
-        <input type="text" id="tipo_colegio_p" name="tipo_colegio_p" required><br><br>
+        <select id="tipo_colegio_p" name="tipo_colegio_p">
+            <option value="1">Municipal</option>
+            <option value="2">Subvencionado</option>
+            <option value="3">Privado</option>
+        </select><br><br>
 
         <label for="nom_colegio">Nombre del Colegio:</label>
         <input type="text" id="nom_colegio" name="nom_colegio" required><br><br>
@@ -30,7 +34,10 @@
         <input type="number" id="anyo_egreso_col" name="anyo_egreso_col" required><br><br>
 
         <label for="tipo_pago">Tipo de Pago:</label>
-        <input type="text" id="tipo_pago" name="tipo_pago" required><br><br>
+        <select id="tipo_pago" name="tipo_pago">
+            <option value="0">Al Contado</option>
+            <option value="1">Cuotas</option>
+        </select><br><br>
 
         <input type="submit" value="Enviar"  href="" >
     </form>

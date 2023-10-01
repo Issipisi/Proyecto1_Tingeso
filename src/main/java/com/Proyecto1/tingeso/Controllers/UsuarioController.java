@@ -9,9 +9,7 @@ import org.springframework.web.bind.annotation.*;
 public class UsuarioController {
     @Autowired
     UsuarioServices usuarioServices;
-
     @PostMapping("/usuarios")
-
     public void insertUsuario(@RequestBody Usuario usuario){
         usuarioServices.insertUsuario(usuario);
     }

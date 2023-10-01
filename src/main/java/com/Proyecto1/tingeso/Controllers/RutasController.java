@@ -11,13 +11,10 @@ public class RutasController {
     }
 
     @GetMapping("/generarCuota")
-    public String generarCuota(){
-        return "GenerarCuota";
+    public String generarCuota() { return "GenerarCuota";
     }
 
     @GetMapping("/index")
-    public String index(){
-        return "Index";
-    }
+    public String index() { return "Index";}
 
 }
