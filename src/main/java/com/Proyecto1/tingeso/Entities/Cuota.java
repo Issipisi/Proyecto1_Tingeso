@@ -17,4 +17,6 @@ public class Cuota {
     private LocalDate fecha_venc;
     @Column(name="rut", nullable = false)
     private String rut;
+    @Column(name = "cant_cuotas", nullable = false)
+    private int cant_cuotas;
 }

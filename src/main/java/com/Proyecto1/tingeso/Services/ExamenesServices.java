@@ -11,4 +11,10 @@ public class ExamenesServices {
     public void insertExamenes(Examenes examenes){
         examenesRepository.insertExamenes(examenes.getPuntaje(), examenes.getFecha_exam(), examenes.getRut());
     }
+
+    public Examenes selectExamenes(String rut){
+        Examenes examenes = new Examenes();
+        examenes = examenesRepository.selectExamenes(rut);
+        return examenes;
+    }
 }

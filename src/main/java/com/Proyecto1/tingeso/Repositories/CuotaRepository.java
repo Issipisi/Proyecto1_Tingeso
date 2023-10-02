@@ -12,12 +12,13 @@ import java.time.LocalDate;
 public interface CuotaRepository extends CrudRepository<Cuota,Long> {
     @Modifying
     @Transactional
-    @Query(value = "insert into cuota (valor, estado, fecha_venc, rut) values (:valor, :estado, :fecha_venc, :rut)",
-            nativeQuery = true)
+    @Query(value = "insert into cuota ( valor, estado, fecha_venc, rut, cant_cuotas) values ( :valor, :estado, " +
+            ":fecha_venc, :rut ,:cant_cuotas)", nativeQuery = true)
 
-    public void insertCuota(@Param("valor")int valor,
+    public void insertCuota(@Param("valor") int valor,
                             @Param("estado") int estado,
-                            @Param("fecha_venc")LocalDate fecha_venc,
-                            @Param("rut") String rut);
+                            @Param("fecha_venc") LocalDate fecha_venc,
+                            @Param("rut") String rut,
+                            @Param("cant_cuotas") int cant_cuotas);
 
 }

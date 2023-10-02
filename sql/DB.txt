@@ -12,6 +12,7 @@ create table estudiante(
 
 create table cuota(
 	id bigint not null auto_increment unique,
+	cant_cuotas int not null,
 	valor int not null,
 	estado int not null,
 	fecha_venc date not null,

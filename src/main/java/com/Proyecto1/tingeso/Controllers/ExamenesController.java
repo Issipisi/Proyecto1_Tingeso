@@ -5,6 +5,9 @@ import com.Proyecto1.tingeso.Services.ExamenesServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+
+import java.time.LocalDate;
 
 @Controller @RequestMapping @CrossOrigin @RestController
 public class ExamenesController {
@@ -12,8 +15,19 @@ public class ExamenesController {
     ExamenesServices examenesServices;
 
     @PostMapping("/examenes")
+    public ModelAndView insertExamenes(@RequestParam("puntaje") int puntaje,
+                                       @RequestParam("fecha_exam") String fecha_exam,
+                                       @RequestParam("rut") String rut){
 
-    public void insertExamenes(@RequestBody Examenes examenes){
+        Examenes examenes = new Examenes();
+        examenes.setPuntaje(puntaje);
+        examenes.setFecha_exam(LocalDate.parse(fecha_exam));
+        examenes.setRut(rut);
+
         examenesServices.insertExamenes(examenes);
+
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("IndexAdmin");
+        return modelAndView;
     }
 }

@@ -12,10 +12,13 @@ import java.time.LocalDate;
 public interface ExamenesRepository extends CrudRepository<Examenes,Long> {
     @Modifying
     @Transactional
-    @Query(value = "insert into examenes (puntaje, fecha_exam, rut) values (:puntaje, :fecha_exam, :rut)",
+    @Query(value = "insert into examenes ( puntaje, fecha_exam, rut) values ( :puntaje, :fecha_exam, :rut)",
             nativeQuery = true)
 
     public void insertExamenes(@Param("puntaje") int puntaje,
                                @Param("fecha_exam")LocalDate fecha_exam,
                                @Param("rut") String rut);
+
+    @Query(value = "select * from examenes WHERE rut = :rut ", nativeQuery = true)
+    public Examenes selectExamenes(String rut);
 }

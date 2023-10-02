@@ -17,4 +17,8 @@ public class RutasController {
     @GetMapping("/index")
     public String index() { return "Index";}
 
+    @GetMapping("/ingresarExamenes")
+    public String ingresarExamenes() { return "IngresarExamenes";
+    }
+
 }
