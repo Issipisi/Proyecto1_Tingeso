@@ -25,40 +25,25 @@ public class CuotaServices {
     public void generarCuota(String rut){
         Estudiante estudiante = estudianteServices.selectEstudiante(rut);
 
-        //Inicialización de variables
-        int arancelAnual = 1500000;
-        int matricula = 70000;
-        int anyoActual = 2023;
-        int maxCuotas = 0;
+        int cuotasMax = cuotasMaximas(estudiante, 0);
+        int descPrincipales = descuentosPrincipales(1500000, estudiante);
+        int descAnyoIngreso = descuentosAnyoIngreso(descPrincipales, estudiante, 2023);
 
-        //Llamado variables
-        int tipoPago = estudiante.getTipo_pago();
-        int tipoColegio = estudiante.getTipo_colegio_p();
-        int anyoEgreso = estudiante.getAnyo_egreso_col();
+        int valorCuota = (int)(descAnyoIngreso/cuotasMax);
 
-
-        fddfdfd
-
-
-        //Descuento x Año de Egreso
-        anyoEgreso = anyoActual - anyoEgreso;
-        if(anyoEgreso < 1){
-            arancelAnual = (int) (arancelAnual - (arancelAnual * 0.15));
-            System.out.println(arancelAnual);
-        } else if (anyoEgreso == 1 || anyoEgreso == 2) {
-            arancelAnual = (int) (arancelAnual - (arancelAnual * 0.8));
-            System.out.println(arancelAnual);
-        } else if (anyoEgreso == 3 || anyoEgreso == 4) {
-            arancelAnual = (int) (arancelAnual - (arancelAnual * 0.4));
-            System.out.println(arancelAnual);
-        }
-
-
+        System.out.println(cuotasMax);
+        System.out.println(descPrincipales);
+        System.out.println(descAnyoIngreso);
+        System.out.println(valorCuota);
     }
-    public int cuotasMaximas(int arancelAnual, Estudiante estudiante, int maxCuotas){
-        Estudiante alumno = estudiante;
 
-        int tipoColegio = alumno.getTipo_colegio_p();
+    public void listarCuotas(){}
+
+
+
+
+    public int cuotasMaximas( Estudiante estudiante, int maxCuotas){
+        int tipoColegio = estudiante.getTipo_colegio_p();
         //Maximo de Cuotas x Tipo de Colegio
         switch (tipoColegio) {
             case 1:
@@ -78,10 +63,8 @@ public class CuotaServices {
     }
 
     public int descuentosPrincipales(int arancelAnual, Estudiante estudiante){
-        Estudiante alumno = estudiante;
-
-        int tipoPago = alumno.getTipo_pago();
-        int tipoColegio = alumno.getTipo_colegio_p();
+        int tipoPago = estudiante.getTipo_pago();
+        int tipoColegio = estudiante.getTipo_colegio_p();
 
         //Descuento x pago al Contado
         int arancelActualizado = arancelAnual;
@@ -101,24 +84,25 @@ public class CuotaServices {
     }
 
     public int descuentosAnyoIngreso( int arancelAnual, Estudiante estudiante, int anyoActual){
-        Estudiante alumno = estudiante;
+        int tipoPago = estudiante.getTipo_pago();
+        int anyoEgreso = estudiante.getAnyo_egreso_col();
 
-        int tipoPago = alumno.getTipo_pago();
-        int tipoColegio = alumno.getTipo_colegio_p();
-
-        int anyoEgreso = anyoActual - anyoEgreso;
+        anyoEgreso = anyoActual - anyoEgreso;
         int descuento = 0;
 
-        if(anyoEgreso >= 3 && anyoEgreso <= 4) {
-            descuento = 40;
-        } else if(anyoEgreso >= 1 && anyoEgreso <= 2) {
-            descuento = 80;
-        } else if(anyoEgreso < 1) {
-            descuento = 15;
+        if(tipoPago == 0){
+            return arancelAnual;
+        }else {
+            if(anyoEgreso == 3 || anyoEgreso == 4) {
+                descuento = 40;
+            } else if(anyoEgreso == 1 || anyoEgreso == 2) {
+                descuento = 80;
+            } else if(anyoEgreso < 1) {
+                descuento = 15;
+            }
+            arancelAnual -= (arancelAnual * descuento / 100);
+            return arancelAnual;
         }
-
-        arancelAnual -= (arancelAnual * descuento / 100);
-        System.out.println(arancelAnual);
     }
 
 }

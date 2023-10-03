@@ -11,14 +11,15 @@ public class RutasController {
     }
 
     @GetMapping("/generarCuota")
-    public String generarCuota() { return "GenerarCuota";
-    }
+    public String generarCuota() { return "GenerarCuota";}
 
     @GetMapping("/index")
     public String index() { return "Index";}
 
     @GetMapping("/ingresarExamenes")
-    public String ingresarExamenes() { return "IngresarExamenes";
-    }
+    public String ingresarExamenes() { return "IngresarExamenes";}
+
+    @GetMapping("/indexAdmin")
+    public String indexAdmin() { return "IndexAdmin";}
 
 }
