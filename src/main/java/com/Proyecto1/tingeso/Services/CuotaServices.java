@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.SQLOutput;
+import java.time.LocalDate;
+import java.util.List;
 
 @Service
 public class CuotaServices {
@@ -24,22 +26,35 @@ public class CuotaServices {
     //tipo_pago = 0 al contado, 1 cuotas
     public void generarCuota(String rut){
         Estudiante estudiante = estudianteServices.selectEstudiante(rut);
-
+        Cuota cuota = new Cuota();
+        int mes = 3;
         int cuotasMax = cuotasMaximas(estudiante, 0);
         int descPrincipales = descuentosPrincipales(1500000, estudiante);
         int descAnyoIngreso = descuentosAnyoIngreso(descPrincipales, estudiante, 2023);
-
         int valorCuota = (int)(descAnyoIngreso/cuotasMax);
 
-        System.out.println(cuotasMax);
-        System.out.println(descPrincipales);
-        System.out.println(descAnyoIngreso);
-        System.out.println(valorCuota);
+        cuota.setValor(valorCuota);
+        cuota.setEstado(0);     // 0 No pagado - 1 Pagado
+        cuota.setCant_cuotas(cuotasMax);
+        cuota.setRut(rut);
+
+        for (int i = 0; i < cuotasMax; i++){
+            cuota.setFecha_venc(LocalDate.of(2023,mes,10));
+            insertCuota(cuota);
+            mes++;
+            if(mes>12){
+                mes = 3;
+            }
+        }
     }
 
-    public void listarCuotas(){}
+    public List<Cuota> listarCuotas(String rut){
+        return cuotaRepository.getCuota(rut);
+    }
 
-
+    public void pagarCuota(String rut, Long id){
+        cuotaRepository.pagarCuota(rut, id);
+    }
 
 
     public int cuotasMaximas( Estudiante estudiante, int maxCuotas){

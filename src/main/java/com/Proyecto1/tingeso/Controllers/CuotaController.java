@@ -26,4 +26,23 @@ public class CuotaController {
         modelAndView.setViewName("Index");
         return modelAndView;
     }
+
+    @GetMapping("/listarCuotas")
+    public ModelAndView mostrarCuota(@RequestParam(name = "rut") String rut){
+        cuotaServices.listarCuotas(rut);
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("MostrarCuotas");
+        modelAndView.getModel().put("cuota", cuotaServices.listarCuotas(rut));
+        return modelAndView;
+    }
+
+    @PostMapping("/pagarCuota")
+    public ModelAndView pagarCuota(@RequestParam(name = "rut") String rut,
+                                   @RequestParam(name = "id") Long id) {
+        cuotaServices.pagarCuota(rut, id);
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("index");
+        return modelAndView;
+    }
+
 }

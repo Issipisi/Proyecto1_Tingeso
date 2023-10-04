@@ -22,4 +22,11 @@ public class RutasController {
     @GetMapping("/indexAdmin")
     public String indexAdmin() { return "IndexAdmin";}
 
+    @GetMapping("/mostrarCuotaR")
+    public String mostrarCuotaR() { return "mostrarCuotasRut";}
+
+    @GetMapping("/pagarCuota")
+    public String pagarCuota() { return "pagarCuota";}
+
+
 }
