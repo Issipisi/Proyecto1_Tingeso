@@ -26,10 +26,9 @@
             <td th:text="${cuota.getEstado()} ? 'Pagado' : 'No Pagado'" />
             <td>
 
-            <form action = "/pagarCuota" method="put" enctype="application/json">
-                <input type="text" id="rut" name="rut" value = th:text="${cuota.getRut()}" required><br><br>
-                <input type="text" id="id_cuota" name="id_cuota" value = th:text="${cuota.getId()}" required><br><br>
-                <input type="submit" value="Pagar"  href="/GenerarCuota" >
+            <form th:action = "@{/pagarCuota}" method="post" >
+                <input type="hidden" name="cuotaId" th:value="${cuota.id}" />
+                <button type="submit" class="btn btn-primary">Pagar</button>
             </form>
 
             <td/>

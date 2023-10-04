@@ -26,7 +26,6 @@ public interface CuotaRepository extends CrudRepository<Cuota,Long> {
 
     @Modifying
     @Transactional
-    @Query(value = "update cuota set estado = 1 where rut = :rut and id = :id", nativeQuery = true)
-    public void pagarCuota(@Param("rut") String rut,
-                           @Param("id") Long id);
+    @Query(value = "update cuota set estado = 1 where id = :id", nativeQuery = true)
+    public void pagarCuota(@Param("id") Long id);
 }

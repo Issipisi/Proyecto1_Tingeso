@@ -4,6 +4,7 @@ import com.Proyecto1.tingeso.Repositories.CuotaRepository;
 import com.Proyecto1.tingeso.Services.CuotaServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -37,9 +38,8 @@ public class CuotaController {
     }
 
     @PostMapping("/pagarCuota")
-    public ModelAndView pagarCuota(@RequestParam(name = "rut") String rut,
-                                   @RequestParam(name = "id") Long id) {
-        cuotaServices.pagarCuota(rut, id);
+    public ModelAndView pagarCuota(@RequestParam Long cuotaId, Model model) {
+        cuotaServices.pagarCuota(cuotaId);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("index");
         return modelAndView;

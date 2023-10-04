@@ -52,8 +52,8 @@ public class CuotaServices {
         return cuotaRepository.getCuota(rut);
     }
 
-    public void pagarCuota(String rut, Long id){
-        cuotaRepository.pagarCuota(rut, id);
+    public void pagarCuota( Long id){
+        cuotaRepository.pagarCuota( id);
     }
 
 
