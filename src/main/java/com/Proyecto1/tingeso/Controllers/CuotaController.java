@@ -41,7 +41,7 @@ public class CuotaController {
     public ModelAndView pagarCuota(@RequestParam Long cuotaId, Model model) {
         cuotaServices.pagarCuota(cuotaId);
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("index");
+        modelAndView.setViewName("MostrarCuotasRut");
         return modelAndView;
     }
 

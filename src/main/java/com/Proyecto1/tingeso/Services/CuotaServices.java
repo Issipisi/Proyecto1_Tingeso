@@ -48,13 +48,7 @@ public class CuotaServices {
         }
     }
 
-    public List<Cuota> listarCuotas(String rut){
-        return cuotaRepository.getCuota(rut);
-    }
-
-    public void pagarCuota( Long id){
-        cuotaRepository.pagarCuota( id);
-    }
+    //public int interesCuotas(Estudiante estudiante){}
 
 
     public int cuotasMaximas( Estudiante estudiante, int maxCuotas){
@@ -120,4 +114,11 @@ public class CuotaServices {
         }
     }
 
+    public List<Cuota> listarCuotas(String rut){
+        return cuotaRepository.getCuota(rut);
+    }
+
+    public void pagarCuota( Long id){
+        cuotaRepository.pagarCuota( id);
+    }
 }
