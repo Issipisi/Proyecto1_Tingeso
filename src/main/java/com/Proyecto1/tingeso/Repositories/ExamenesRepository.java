@@ -18,7 +18,9 @@ public interface ExamenesRepository extends CrudRepository<Examenes,Long> {
     public void insertExamenes(@Param("puntaje") int puntaje,
                                @Param("fecha_exam")LocalDate fecha_exam,
                                @Param("rut") String rut);
-
     @Query(value = "select * from examenes WHERE rut = :rut ", nativeQuery = true)
     public Examenes selectExamenes(String rut);
+
+    @Query(value = "select avg(puntaje) from examenes where rut = :rut and year(fecha_exam) =:anyo and month(fecha_exam) = :mes group by rut", nativeQuery = true)
+    public int getPromedio(String rut, int anyo, int mes);
 }

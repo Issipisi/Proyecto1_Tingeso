@@ -2,6 +2,7 @@ package com.Proyecto1.tingeso.Services;
 import com.Proyecto1.tingeso.Entities.Estudiante;
 import com.Proyecto1.tingeso.Repositories.CuotaRepository;
 import com.Proyecto1.tingeso.Entities.Cuota;
+import com.Proyecto1.tingeso.Repositories.ExamenesRepository;
 import org.hibernate.cache.spi.support.AbstractNaturalIdDataAccess;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +15,8 @@ import java.util.List;
 public class CuotaServices {
     @Autowired
     CuotaRepository cuotaRepository;
+    @Autowired
+    ExamenesRepository examenesRepository;
     @Autowired
     EstudianteServices estudianteServices;
 
@@ -32,6 +35,8 @@ public class CuotaServices {
         int descPrincipales = descuentosPrincipales(1500000, estudiante);
         int descAnyoIngreso = descuentosAnyoIngreso(descPrincipales, estudiante, 2023);
         int valorCuota = (int)(descAnyoIngreso/cuotasMax);
+        int descPuntajeExam = descuentoPuntajeExamen(mes,2023, rut);
+
 
         cuota.setValor(valorCuota);
         cuota.setEstado(0);     // 0 No pagado - 1 Pagado
@@ -48,7 +53,24 @@ public class CuotaServices {
         }
     }
 
+    public int actualizarCuota(int valor, Long id){
+        return 1;
+    }
+
     //public int interesCuotas(Estudiante estudiante){}
+
+    public int descuentoPuntajeExamen(int mes, int anyo, String rut){
+        int promedio = examenesRepository.getPromedio(rut, anyo, mes);
+        if (promedio >= 950 || 1000 >= promedio){
+            return 10;
+        }else if (promedio >= 900 || promedio < 949) {
+            return 5;
+        } else if (promedio >= 850 || promedio < 899) {
+            return 2;
+        }else{
+            return 0;
+        }
+    }
 
 
     public int cuotasMaximas( Estudiante estudiante, int maxCuotas){
@@ -61,7 +83,6 @@ public class CuotaServices {
             case 2:
                 maxCuotas = 7;
                 break;
-
             case 3:
                 maxCuotas = 4;
                 break;
@@ -112,12 +133,12 @@ public class CuotaServices {
             arancelAnual -= (arancelAnual * descuento / 100);
             return arancelAnual;
         }
+
     }
 
     public List<Cuota> listarCuotas(String rut){
         return cuotaRepository.getCuota(rut);
     }
-
     public void pagarCuota( Long id){
         cuotaRepository.pagarCuota( id);
     }
