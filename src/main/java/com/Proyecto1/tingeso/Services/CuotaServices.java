@@ -35,7 +35,7 @@ public class CuotaServices {
         int descPrincipales = descuentosPrincipales(1500000, estudiante);
         int descAnyoIngreso = descuentosAnyoIngreso(descPrincipales, estudiante, 2023);
         int valorCuota = (int)(descAnyoIngreso/cuotasMax);
-        int descPuntajeExam = descuentoPuntajeExamen(mes,2023, rut);
+        //int descPuntajeExam = descuentoPuntajeExamen(mes,2023, rut);
 
 
         cuota.setValor(valorCuota);
@@ -53,19 +53,13 @@ public class CuotaServices {
         }
     }
 
-    public int actualizarCuota(int valor, Long id){
-        return 1;
-    }
-
-    //public int interesCuotas(Estudiante estudiante){}
-
     public int descuentoPuntajeExamen(int mes, int anyo, String rut){
         int promedio = examenesRepository.getPromedio(rut, anyo, mes);
-        if (promedio >= 950 || 1000 >= promedio){
+        if (promedio >= 950 && 1000 >= promedio){
             return 10;
-        }else if (promedio >= 900 || promedio < 949) {
+        }else if (promedio >= 900 && promedio < 949) {
             return 5;
-        } else if (promedio >= 850 || promedio < 899) {
+        } else if (promedio >= 850 && promedio < 899) {
             return 2;
         }else{
             return 0;

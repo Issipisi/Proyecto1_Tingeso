@@ -15,6 +15,8 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.time.LocalDate;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class ExamenesServices {
@@ -24,10 +26,8 @@ public class ExamenesServices {
     public void insertExamenes(Examenes examenes){
         examenesRepository.insertExamenes(examenes.getPuntaje(), examenes.getFecha_exam(), examenes.getRut());
     }
-    public Examenes selectExamenes(String rut){
-        Examenes examenes = new Examenes();
-        examenes = examenesRepository.selectExamenes(rut);
-        return examenes;
+    public List <Examenes> selectExamenes(String rut){
+        return examenesRepository.selectExamenes(rut);
     }
 
     public void subirArchivoNotas(MultipartFile archivo) throws IOException{
