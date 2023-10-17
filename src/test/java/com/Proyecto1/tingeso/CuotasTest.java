@@ -17,7 +17,6 @@ public class CuotasTest extends AbstractTransactionalJUnit4SpringContextTests {
     @Test
     void crearCuota(){
         Cuota cuota = new Cuota();
-
         cuotaServices.generarCuota("20.581.478-7");
         assertNotNull(cuotaServices.listarCuotas("20.581.478-7"));
     }
@@ -25,7 +24,6 @@ public class CuotasTest extends AbstractTransactionalJUnit4SpringContextTests {
     @Test
     void crearCuota1(){
         Cuota cuota = new Cuota();
-
         cuotaServices.generarCuota("12.345.678-9");
         assertNotNull(cuotaServices.listarCuotas("12.345.678-9"));
     }
@@ -33,7 +31,6 @@ public class CuotasTest extends AbstractTransactionalJUnit4SpringContextTests {
     @Test
     void crearCuota2(){
         Cuota cuota = new Cuota();
-
         cuotaServices.generarCuota("12.235.569-7");
         assertNotNull(cuotaServices.listarCuotas("12.235.569-7"));
     }
@@ -41,7 +38,6 @@ public class CuotasTest extends AbstractTransactionalJUnit4SpringContextTests {
     @Test
     void descuentoCuota(){
         Cuota cuota = new Cuota();
-
         cuotaServices.descuentoPuntajeExamen(7, 2023,"20.581.478-7");
         assertNotNull(cuotaServices.listarCuotas("20.581.478-7"));
     }
@@ -49,7 +45,6 @@ public class CuotasTest extends AbstractTransactionalJUnit4SpringContextTests {
     @Test
     void descuentoCuota1(){
         Cuota cuota = new Cuota();
-
         cuotaServices.descuentoPuntajeExamen(6, 2023,"20.581.478-7");
         assertNotNull(cuotaServices.listarCuotas("20.581.478-7"));
     }
